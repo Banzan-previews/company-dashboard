@@ -1,146 +1,132 @@
 import React from 'react'
+import { RenderCharts } from './RenderCharts';
+// import Chart from "react-google-charts";
 // import RoboChart from '@postlight/react-google-sheet-to-chart';
-import styled from 'styled-components';
-import Chart from "react-google-charts";
-import { Space } from './Utils';
+// import styled from 'styled-components';
+// import { ChartContainer , ChartTitle} from './Utils';
 
 
+const chartData = [
 
-// const config = {
-//     sheetId :'10E37Oi6bAc_a0iT1BYHr62FpwdLQGKP0ILvHLptlbV8',
-//     token : 'AIzaSyBuKdqj4t6-X76tK_06rIsghYBtGTZROlI',
-//     sheetName : 'Sheet1'
-// }
+    {
+        id:'1',
+        ChartTitle:'Total Followers',
+        maxWidth:'1000',
+        width: '100%',
+        height: 500,
+        chartType:"SteppedAreaChart",
+        spreadSheetUrl:"https://docs.google.com/spreadsheets/d/10E37Oi6bAc_a0iT1BYHr62FpwdLQGKP0ILvHLptlbV8",
+        spreadSheetQueryParameters:{
+            headers: 1,
+            query: 'SELECT A, H, J,  I ',
+            sheet: 'Master Graph'
+            },
+        options :{
+            colors:['#7142db','#61d7a1','#f39564'],
+                hAxis: {},
+                vAxis: {format: 'short'},
+            },
+        controls:[
+            {
+                controlType: 'DateRangeFilter',
+                options: {
+                filterColumnLabel: 'DATE',
+                ui: { format: { pattern: 'dd/MM/yyyy' } },
+                },
+            }],
+            
 
-const ChartContainer = styled.div`
-    padding : 10px;
-    box-shadow : 0px 0px 5px 5px rgba(226, 200, 252, 0.221);
-    background-color : white;
-    border-radius : 20px;
-    width : 100%;
-    margin : 10px;
-    max-width : 600px;
-    max-width : ${props=> props.maxWidth? `${props.maxWidth}px` : '600px' } ;
+        rootProps :{ 'data-testid': '2' }
+    
+    },
+    {
+        id:'2',
+        ChartTitle:'Insta  @gobablah',
+        maxWidth:'400',
+        width: '100%',
+        height: 400,
+        chartType:"SteppedAreaChart",
+        spreadSheetUrl:"https://docs.google.com/spreadsheets/d/10E37Oi6bAc_a0iT1BYHr62FpwdLQGKP0ILvHLptlbV8",
+        spreadSheetQueryParameters:{
+            headers: 1,
+            query: 'SELECT A,K',
+            sheet: 'Master Graph'
+            },
+        options :{
+            colors:['#ed4b7c'],
+            hAxis: {},
+            vAxis: {format: 'short'},
+            },
+        controls:[
+            {
+                controlType: 'DateRangeFilter',
+                options: {
+                filterColumnLabel: 'DATE',
+                ui: { 
+                    label : '',
+                    format: { pattern: 'dd/M/yyyy' }, 
+                    labelStacking : 'vertical',
+                    // cssClass : 'graph-control',
+                    // selectedValuesLayout : 'below',
+                    // orientation : 'vertical',
+                    },
+                },
+            }],
+                
+        rootProps :{ 'data-testid': '3' }
+    
+    },
+    {
+        id:'3',
+        ChartTitle:'Twitter  @BaBlahComics',
+        maxWidth:'400',
+        width: '100%',
+        height: 400,
+        chartType:"SteppedAreaChart",
+        spreadSheetUrl:"https://docs.google.com/spreadsheets/d/10E37Oi6bAc_a0iT1BYHr62FpwdLQGKP0ILvHLptlbV8",
+        spreadSheetQueryParameters:{
+            headers: 1,
+            query: 'SELECT A, L',
+            sheet: 'Master Graph'
+            },
+        options :{
+            colors:['#7ccdf9'],
+            hAxis: {},
+            vAxis: {format: 'short'},
+            },
+        controls:[
+            {
+                controlType: 'DateRangeFilter',
+                options: {
+                filterColumnLabel: 'DATE',
+                ui: { 
+                    label : '',
+                    format: { pattern: 'dd/M/yyyy' }, 
+                    labelStacking : 'vertical',
+                    // cssClass : 'graph-control',
+                    // selectedValuesLayout : 'below',
+                    // orientation : 'vertical',
+                    },
+                },
+            }],
 
-`
+        rootProps :{ 'data-testid': '4' }
+    
+    },
+    
 
-const ChartTitle = styled.div`
-    font-weight : bold;
-    padding : 5px;
-    text-align : center;
-
-`
+]
 
 export default function Home(props) {
 
 
     return (
         <>
-            <ChartContainer maxWidth={1000} >
-                <ChartTitle>
-                    Total Followers
-                </ChartTitle>
-                <Chart
-                    width={'100%'}
-                    height={500}
-                    chartType="SteppedAreaChart"
-                    spreadSheetUrl="https://docs.google.com/spreadsheets/d/10E37Oi6bAc_a0iT1BYHr62FpwdLQGKP0ILvHLptlbV8"
-                    spreadSheetQueryParameters={{
-                        headers: 1,
-                        query: 'SELECT A, H, J,  I ',
-                        sheet: 'Master Graph'
-                    }}
-                    options={{
-                        colors:['#7142db','#61d7a1','#f39564'],
-                        hAxis: {
 
-                        },
-                        vAxis: {
+            {chartData.map(chart=>{
+                return(<RenderCharts key={chart.id} data={chart} />)
+            })}
 
-                            format: 'short'
-                        },
-                    }}
-
-                    rootProps={{ 'data-testid': '1' }}
-                />
-
-            </ChartContainer>
-
-
-            {/* =========================== */}
-            {/* =========================== */}
-            {/* =========================== */}
-
-            <ChartContainer maxWidth={300} >
-                <ChartTitle>
-                   Insta  @gobablah
-                </ChartTitle>
-                <Chart
-                    width={'100%'}
-                    height={500}
-                    chartType="SteppedAreaChart"
-                    spreadSheetUrl="https://docs.google.com/spreadsheets/d/10E37Oi6bAc_a0iT1BYHr62FpwdLQGKP0ILvHLptlbV8"
-                    spreadSheetQueryParameters={{
-                        headers: 1,
-                        query: 'SELECT A,K',
-                        sheet: 'Master Graph'
-                    }}
-                    options={{
-                        colors:['#ed4b7c'],
-                        hAxis: {
-
-                        },
-                        vAxis: {
-
-                            format: 'short'
-                        },
-                    }}
-
-                    rootProps={{ 'data-testid': '1' }}
-                />
-
-            </ChartContainer>
-
-            {/* =========================== */}
-            {/* =========================== */}
-            {/* =========================== */}
-
-            <ChartContainer maxWidth={300} >
-                <ChartTitle>
-                    Twitter  @BaBlahComics
-                </ChartTitle>
-                <Chart
-                    width={'100%'}
-                    height={500}
-                    chartType="SteppedAreaChart"
-                    spreadSheetUrl="https://docs.google.com/spreadsheets/d/10E37Oi6bAc_a0iT1BYHr62FpwdLQGKP0ILvHLptlbV8"
-                    spreadSheetQueryParameters={{
-                        headers: 1,
-                        query: 'SELECT A, L',
-                        sheet: 'Master Graph'
-                    }}
-                    options={{
-                        colors:['#7ccdf9'],
-                        hAxis: {
-
-                        },
-                        vAxis: {
-
-                            format: 'short'
-                        },
-                    }}
-
-                    rootProps={{ 'data-testid': '1' }}
-                />
-
-            </ChartContainer>
-
-            {/* =========================== */}
-            {/* =========================== */}
-            {/* =========================== */}
-
-           
-            
         </>
     )
 }

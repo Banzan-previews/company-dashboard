@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import {Link, useLocation} from 'react-router-dom'
 import { Space } from './Utils';
 
+import logo from '../Assets/logo2.png'
+
 const NavBox = styled.div`
     position: fixed;
     top : 0;
@@ -17,7 +19,7 @@ const NavBox = styled.div`
     align-content: center;
     box-shadow : 0px 0px 5px 5px rgba(226, 200, 252, 0.221);
     overflow : auto;
-    z-index : 1000;
+    z-index : 1500;
 
 `
 
@@ -27,11 +29,12 @@ const Button = styled.div`
     cursor : pointer;
     border-radius : 5px;
     font-weight : ${props=>props.active ? 'bold' : 'normal' } ;
-    color :${props=>props.active ? 'white' : '#a5a6ab' } ;
+    color :${props=>props.active ? 'white' : '#5e5e5e' } ;
     background-color : ${props=>props.active ? '#7142db' : ''} ;
     padding : 5px;
     margin : 5px;
     text-decoration: none;
+    font-size : 0.9em;
 
     
 `
@@ -64,28 +67,29 @@ export default function  Navbar(){
 
     return(
         <NavBox>
-            <Space size={100} />
-            <Space size={20} />
+            <Space size={10} />
+            <img style={{width:'100px',padding:'5px'}} src={logo} alt="" /> 
+            <Space size={50} />
             <Link style={{textDecoration:'none'}} to='/'>
                 <Button active={(currentLocation === '/')} > {home} &nbsp; Overview </Button>
             </Link>
-            <Space size={20} />
+            <Space size={10} />
             <Link style={{textDecoration:'none'}} to='/growth'>
                 <Button active={(currentLocation === '/growth')} > {chart} &nbsp; Growth </Button>
             </Link>
-            <Space size={20} />
+            <Space size={10} />
             <Link style={{textDecoration:'none'}} to='/timeline'>
                 <Button active={(currentLocation === '/timeline')} > {clock} &nbsp; Timeline </Button>
             </Link>
-            <Space size={20} />
+            <Space size={10} />
             <Link style={{textDecoration:'none'}} to='/resource'>
                 <Button active={(currentLocation === '/resource')} > {dollar} &nbsp; Resource </Button>
             </Link>
-            <Space size={20} />
+            <Space size={10} />
             <Link style={{textDecoration:'none'}} to='/manage'>
                 <Button active={(currentLocation === '/manage')} > {flag} &nbsp; Manage </Button>
             </Link>
-            <Space size={20} />
+            <Space size={10} />
             <Button> {gear} &nbsp; Settings </Button>
             <Space size={200} />
 

@@ -21,8 +21,8 @@ const Container = styled.div`
   left : 0 ;
   top : 0;
   overflow-y : scroll;
-  background-color : white;
-  // background-color : #f4f5fa;
+  // background-color : white;
+  background-color : #f4f5fa;
 `
 
 const WorkArea = styled.div`
@@ -54,7 +54,7 @@ function App() {
                 <Route path='/resource' component={Resource} />
                 <Route path='/timeline' component={Timeline} />
                 <Route path='/manage' component={Manage} />
-                <Route path='/' component={Home} />
+                <Route  path='/' component={Home} />
               </Switch>
 
           </ShowcaseGrid>

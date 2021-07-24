@@ -12,7 +12,7 @@ const NavBox = styled.div`
     padding : 10px;
     justify-content : space-between;
     align-content: center;
-    z-index : 1500;
+    z-index : 1000;
     box-shadow : 0px 0px 5px 5px rgba(226, 200, 252, 0.221);
 
 `

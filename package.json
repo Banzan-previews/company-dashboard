@@ -2,7 +2,7 @@
   "name": "banzandash",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jithinksatheesh.github.io/Banzan-dashboard/",
+  "homepage": "https://Banzan-previews.github.io/company-dashboard/",
   "dependencies": {
     "@postlight/react-google-sheet-to-chart": "^0.1.7",
     "@testing-library/jest-dom": "^5.11.4",
