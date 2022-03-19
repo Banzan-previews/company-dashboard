@@ -33,7 +33,7 @@ const chartData = [
                     label : '',
                     format: { pattern: 'dd/M/yyyy' }, 
                     labelStacking : 'vertical',
-                    // cssClass : 'graph-control',
+                    cssClass : 'graph-control',
                     // selectedValuesLayout : 'below',
                     // orientation : 'vertical',
                     },
